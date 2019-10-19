@@ -91,6 +91,9 @@ PRODUCT_BRAND := Android
 PRODUCT_MODEL := Phh-Treble $apps_name
 
 PRODUCT_PACKAGES += $extra_packages
+PRODUCT_AAPT_CONFIG := hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
+PRODUCT_PROPERTY_OVERRIDES += ro.setupwizard.mode=OPTIONAL
 
 EOF
 echo -e '\t$(LOCAL_DIR)/'$target.mk '\' >> AndroidProducts.mk
