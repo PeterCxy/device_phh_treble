@@ -381,6 +381,12 @@ if getprop ro.vendor.build.fingerprint | grep -qiE '^samsung/' && [ "$vndk" -ge 
 	fi
 fi
 
+if getprop ro.vendor.build.fingerprint | grep -qiE 'full_k39tv1_64_bsp/'; then
+	# K-touch i9 has small battery and has buggy hardware acceleration
+	setprop ro.config.avoid_gfx_accel true
+	setprop ro.config.small_battery true
+fi
+
 if [ -f /system/phh/secure ];then
     copyprop() {
         p="$(getprop "$2")"
