@@ -67,6 +67,15 @@ PRODUCT_COPY_FILES += \
 	device/phh/treble/empty:system/phh/empty \
 	device/phh/treble/phh-on-boot.sh:system/bin/phh-on-boot.sh
 
+ifneq (,$(filter userdebug user, $(TARGET_BUILD_VARIANT)))
+	# Force securize on userdebug / user builds
+	# Note that this doesn't disable `su` like `securize` does,
+	# which is a good thing
+	# This is also easier to temporarily disable
+	PRODUCT_COPY_FILES += \
+		device/phh/treble/empty:system/phh/secure
+endif
+
 PRODUCT_PACKAGES += \
 	treble-environ-rc \
 
